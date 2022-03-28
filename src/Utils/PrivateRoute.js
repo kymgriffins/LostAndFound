@@ -1,11 +1,9 @@
 import React from 'react'
-import {Route,  Navigate} from 'react-router-dom'
-const PrivateRoute = ({children, ...rest}) => {
-    console.log('Private Route works!')
-    const authenticated = false
-  return (
-    <Route {...rest}>{!authenticated ? < Navigate to="/login"/> : children}</Route>
-  )
+import {Navigate,  Outlet} from 'react-router-dom'
+const PrivateRoute = ({isLogged}) => {
+    // console.log('Private Route works!')
+    
+  return isLogged ? <Outlet />:< Navigate to="/login"/>
 }
 
 export default PrivateRoute
